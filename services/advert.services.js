@@ -1,8 +1,8 @@
 const Advert = require("../modals/advert.modal")
 var _ = require('lodash');
 
-const createAdvert = ({ title, budget, description, spesifics, is_cargo_accepts, user, category }) => {
-    return Advert.create({ title, budget, description, spesifics, is_cargo_accepts, user,category })
+const createAdvert = ({ title, budget, description, specs, is_cargo_accepts, user, category }) => {
+    return Advert.create({ title, budget, description, specs, is_cargo_accepts, user,category })
 }
 
 
@@ -18,5 +18,6 @@ const getAdvertById = (id) => {
 module.exports = {
     createAdvert,
     getAdverts,
-    getAdvertById
+    getAdvertById,
+    
 }
