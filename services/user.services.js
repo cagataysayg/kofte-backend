@@ -1,5 +1,6 @@
 const User = require("../modals/user.modal")
 var _ = require('lodash');
+
 const createUser = ({ name, lastname, email, password, }) => {
     return User.create({ name, lastname, email, password })
 }
@@ -22,10 +23,14 @@ const validatePassword = async ({
     return _.omit(user.toJSON(), ["password", "createdAt", "updatedAt", "__v"]);
 }
 
+const getUserById = (id) => {
+    return User.findById(id,{password:0})
+}
 
 
 
 module.exports = {
     createUser,
-    validatePassword
+    validatePassword,
+    getUserById
 }
