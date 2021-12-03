@@ -28,6 +28,15 @@ UserSchema.pre("save", async function (next) {
 });
 
 
+// Used for logging in
+UserSchema.methods.comparePassword = async function (
+    candidatePassword
+) {
+    const user = this;
+
+    return bcrypt.compare(candidatePassword, user.password).catch((e) => false);
+};
+
 //kullancıcı girişi yapmak için model oluşturuyoruz.
 const User = mongoose.model("User", UserSchema);
 
