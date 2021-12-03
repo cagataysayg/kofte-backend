@@ -6,8 +6,11 @@ const createAdvert = ({ title, budget, description, spesifics, is_cargo_accepts,
 }
 
 
-
+const getAdverts = (query, options = {}) => {
+    return Advert.find(query, options)
+}
 
 module.exports = {
     createAdvert,
+    getAdverts
 }

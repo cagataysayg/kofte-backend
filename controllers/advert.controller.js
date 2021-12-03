@@ -1,5 +1,7 @@
 const _ = require("lodash")
-const { createAdvert } = require("../services/advert.services")
+const { createAdvert, getAdverts } = require("../services/advert.services")
+
+
 const createNewAdvertHandler = async (req, res, next) => {
     const { title, budget, description, spesifics, is_cargo_accepts } = req.body
     const user = req.user._id
@@ -19,6 +21,12 @@ const createNewAdvertHandler = async (req, res, next) => {
 
 }
 
+const getAdvertsHandler = async (req, res, next) => {
+    const adverts = await getAdverts({}, {})
+    return res.json({ success: true, data: adverts })
+}
+
 module.exports = {
-    createNewAdvertHandler
+    createNewAdvertHandler,
+    getAdvertsHandler
 }

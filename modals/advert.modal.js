@@ -10,7 +10,8 @@ const AdvertSchema = new mongoose.Schema(
             mustBe: { type: Boolean, required: true, default: false }
         }],
         is_cargo_accepts: { type: Boolean, required: true, default: true },
-        user: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
+        user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+        active: { type: Boolean, default: true }
     },
     { timestamps: true }
 );
