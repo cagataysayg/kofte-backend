@@ -11,6 +11,7 @@ const AdvertSchema = new mongoose.Schema(
         }],
         is_cargo_accepts: { type: Boolean, required: true, default: true },
         user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+        category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
         active: { type: Boolean, default: true }
     },
     { timestamps: true }

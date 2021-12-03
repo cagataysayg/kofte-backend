@@ -5,7 +5,9 @@ const router = express.Router()
 const profile = require("./profile")
 const adverts = require("./adverts")
 const offers = require("./offers")
+const admin = require("./admin")
 const { getMyAdvertsHandler } = require("../controllers/advert.controller")
+
 
 
 router.post('/signin', signInHandler)
@@ -17,5 +19,7 @@ router.use('/profile', [requireUser], profile)
 router.use('/adverts', adverts)
 
 router.use('/offers', offers)
+
+router.use('/admin74', admin)
 
 module.exports = router

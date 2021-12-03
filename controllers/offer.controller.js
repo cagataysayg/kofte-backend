@@ -27,7 +27,8 @@ const createNewOfferHandler = async (req, res, next) => {
 }
 
 const getOffersHandler = async (req, res, next) => {
-    const adverts = await getOffers({}, {})
+    
+    const adverts = await getOffers({user:req.user._id}, {})
     return res.json({ success: true, data: adverts })
 }
 
