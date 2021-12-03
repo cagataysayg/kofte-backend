@@ -27,7 +27,7 @@ const createNewOfferHandler = async (req, res, next) => {
 }
 
 const getOffersHandler = async (req, res, next) => {
-    const adverts = await getAdverts({}, {})
+    const adverts = await getOffers({}, {})
     return res.json({ success: true, data: adverts })
 }
 

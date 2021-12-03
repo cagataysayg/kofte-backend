@@ -8,4 +8,6 @@ adverts.post('/', [requireUser], createNewAdvertHandler)
 
 adverts.get('/', getAdvertsHandler)
 
+
+
 module.exports = adverts
