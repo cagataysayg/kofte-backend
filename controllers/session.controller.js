@@ -4,7 +4,7 @@ var _ = require('lodash');
 
 module.exports.signInHandler = async (req, res) => {
     const { email, password } = req.body
-    if (!email || !password) return res.json({ success: false, message: "email or password not provided" })
+    if (!email || !password) return res.status(400).json({ success: false, message: "email or password not provided" })
 
     const user = await validatePassword({ email, password });
 
@@ -17,7 +17,7 @@ module.exports.signInHandler = async (req, res) => {
 
 module.exports.signUpHandler = async (req, res) => {
     const { email, password, name, lastname } = req.body
-    if (!email || !password || !name || !lastname) return res.json({ success: false, message: "any data not provided" })
+    if (!email || !password || !name || !lastname) return res.status(400).json({ success: false, message: "any data not provided" })
     try {
         const user = await createUser({ email, password, name, lastname })
         return res.json(user)

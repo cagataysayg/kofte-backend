@@ -12,14 +12,16 @@ app.use(express.json())
 connect()
 
 app.use(deserializeUser)
+app.use('/public', express.static('public'))
+
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './public/photos/')
+        cb(null, './public/')
     },
     filename: function (req, file, cb) {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        cb(null, file.fieldname + '-' + uniqueSuffix)
+        cb(null, file.fieldname + '-' + uniqueSuffix +'.jpg')
     }
 })
 
@@ -39,7 +41,8 @@ const upload = multer({
 app.post("/upload/offer/:offerId", upload.single('img'), async (req, res, next) => {
     if (req.file) {
         const {offerId} = req.params
-        const pathName = 'file:///C:/Users/keydo/Desktop/hackathon/kofte-backend/'+req.file.path;
+        const pathName = 'http://144.91.113.217:5000/'+req.file.path;
+    	console.log({pathName})
         const added = await addPhotoUrl(offerId,pathName)
         if(added.modifiedCount && added.matchedCount)
         return res.sendStatus(200)
