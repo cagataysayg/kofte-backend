@@ -1,7 +1,6 @@
 const jwt = require("jsonwebtoken");
 const privateKey = `-----BEGIN RSA PRIVATE KEY-----
-MIICwdWxasqwIBAAKBgQCwqQNBc4IP2ewViqE+ZHbndqGoCZFyAUtrwqqxKmO4k/boSvBisJH6BX
-noxFVOjsY+eSXHZqNybrhWRAzutSnpz/QEf/7Vg97g==
+KL020qMoBDs5usSbhk7xIVInXTX8bGGJhwC8LckcFD5XTNX0XUltETFrBqpCWW94gz0RBaT6BOSkpFabnjsR3X8sdoUYaRSghIWGGFB8ijivMhwZoPHfAFxCRhq==
 -----END CERTIFICATE-----`
 
 const sign = data => {
