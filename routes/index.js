@@ -5,6 +5,7 @@ const router = express.Router()
 const profile = require("./profile")
 const adverts = require("./adverts")
 const offers = require("./offers")
+const messages = require("./messages")
 const admin = require("./admin")
 const { getMyAdvertsHandler } = require("../controllers/advert.controller")
 
@@ -15,6 +16,8 @@ router.post('/signup', signUpHandler)
 router.get('/myadverts', [requireUser], getMyAdvertsHandler)
 
 router.use('/profile', [requireUser], profile)
+
+router.use('/messages', [requireUser], messages)
 
 router.use('/adverts', adverts)
 

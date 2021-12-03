@@ -9,14 +9,22 @@ const getOffers = (query, options = {}) => {
     return Offer.find(query, options)
 }
 
+const getOfferById = (offerId) => {
+    return Offer.findById(offerId)
+}
+
 const addPhotoUrl = (offerId, photoUrl) => {
     return Offer.updateOne({ _id: offerId }, { $push: { "photos": photoUrl } });
 }
 
-
+const addMessage = (offerId, message) => {
+    return Offer.update({ "_id": offerId }, { $push: { "messages": message } });
+}
 
 module.exports = {
     createOffer,
     getOffers,
-    addPhotoUrl
+    addPhotoUrl,
+    getOfferById,
+    addMessage
 }

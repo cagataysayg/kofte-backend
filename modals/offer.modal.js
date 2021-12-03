@@ -9,7 +9,8 @@ const OfferSchema = new mongoose.Schema(
         is_cargo: { type: Boolean, required: true, default: true },
         user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
         active: { type: Boolean, default: true },
-        photos:[]
+        photos: [],
+        messages: { type: Array, default: [] }
     },
     { timestamps: true }
 );
