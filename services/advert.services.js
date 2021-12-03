@@ -10,7 +10,13 @@ const getAdverts = (query, options = {}) => {
     return Advert.find(query, options)
 }
 
+const getAdvertById = (id) => {
+    return Advert.findById(id)
+}
+
+
 module.exports = {
     createAdvert,
-    getAdverts
+    getAdverts,
+    getAdvertById
 }
