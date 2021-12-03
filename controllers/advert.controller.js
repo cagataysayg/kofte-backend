@@ -1,5 +1,6 @@
 const _ = require("lodash")
 const { createAdvert, getAdverts } = require("../services/advert.services")
+const { getOffers } = require("../services/offer.services")
 
 
 const createNewAdvertHandler = async (req, res, next) => {
@@ -26,7 +27,18 @@ const getAdvertsHandler = async (req, res, next) => {
     return res.json({ success: true, data: adverts })
 }
 
+const getMyAdvertsHandler = async (req, res, next) => {
+    const _id = req.user._id
+    let adverts = await getAdverts({ user: _id }, {})
+    adverts = await Promise.all(adverts.map(async (item) => {
+        const offers = await getOffers({ advert: item._id })
+        return { ...item._doc, offers }
+    }))
+    return res.json({ success: true, data: adverts })
+}
+
 module.exports = {
     createNewAdvertHandler,
-    getAdvertsHandler
+    getAdvertsHandler,
+    getMyAdvertsHandler
 }
