@@ -2,9 +2,9 @@ const mongoose = require("mongoose")
 
 const AdvertSchema = new mongoose.Schema(
     {
-        title: { type: String, required: true, minlength: 10, maxlength: 500 },
+        title: { type: String, required: true  },
         budget: { type: Number, required: true, min: 0 },
-        description: { type: String, required: true, minlength: 20, maxlength: 1000 },
+        description: { type: String, required: true },
         specs: [{
             spec: { type: String, required: true },
             desc: { type: String, required: true },

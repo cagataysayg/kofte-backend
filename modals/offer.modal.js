@@ -4,7 +4,7 @@ const OfferSchema = new mongoose.Schema(
     {
         advert: { type: mongoose.Schema.Types.ObjectId, ref: "Advert" },
         price: { type: Number, required: true, min: 0 },
-        description: { type: String, required: true, minlength: 20, maxlength: 100 },
+        description: { type: String, required: true },
         spesifics: [],
         is_cargo: { type: Boolean, required: true, default: true },
         user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
