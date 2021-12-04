@@ -28,7 +28,13 @@ const createNewOfferHandler = async (req, res, next) => {
 
 const getOffersHandler = async (req, res, next) => {
 
-    const offers = await getOffers({ user: req.user._id }, {})
+    let offers = await getOffers({ user: req.user._id }, {})
+
+    offers = await Promise.all(offers.map(async (item) => {
+        const advert = await getAdvertById(item.advert)
+        console.log({advert})
+        return { ...item._doc, advert }
+    }))
     return res.json({ success: true, data: offers })
 }
 
