@@ -1,5 +1,5 @@
 const express = require("express")
-const { createNewAdvertHandler, getAdvertsHandler } = require("../controllers/advert.controller")
+const { createNewAdvertHandler, getAdvertsHandler, getAdvertsByIdHandler } = require("../controllers/advert.controller")
 const requireUser = require("../middlewares/requireUser")
 const adverts = express.Router()
 
@@ -8,6 +8,7 @@ adverts.post('/', [requireUser], createNewAdvertHandler)
 
 adverts.get('/', getAdvertsHandler)
 
+adverts.get('/:advertId', getAdvertsByIdHandler)
 
 
 

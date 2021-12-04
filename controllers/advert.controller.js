@@ -63,9 +63,17 @@ const getMyAdvertByIdHandler = async (req, res, next) => {
     return res.json({ success: true, data: advert })
 }
 
+const getAdvertsByIdHandler = async (req, res, next) => {
+    const _id = req.user._id
+    const { advertId } = req.params
+    let advert = await getAdvertById(advertId)
+    return res.json({ success: true, data: advert })
+}
+
 module.exports = {
     createNewAdvertHandler,
     getAdvertsHandler,
     getMyAdvertsHandler,
-    getMyAdvertByIdHandler
+    getMyAdvertByIdHandler,
+    getAdvertsByIdHandler
 }
