@@ -7,13 +7,15 @@ const adverts = require("./adverts")
 const offers = require("./offers")
 const messages = require("./messages")
 const admin = require("./admin")
-const { getMyAdvertsHandler } = require("../controllers/advert.controller")
+const { getMyAdvertsHandler,getMyAdvertByIdHandler } = require("../controllers/advert.controller")
 
 
 
 router.post('/signin', signInHandler)
 router.post('/signup', signUpHandler)
 router.get('/myadverts', [requireUser], getMyAdvertsHandler)
+router.get('/myadverts/:advertId', [requireUser], getMyAdvertByIdHandler)
+
 
 router.use('/profile', [requireUser], profile)
 
