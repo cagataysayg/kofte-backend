@@ -7,8 +7,8 @@ const createNewAdvertHandler = async (req, res, next) => {
     const { title, budget, description, specs, is_cargo_accepts, category } = req.body
     const user = req.user._id
 
-    if (!title || !budget || !description || !specs || !is_cargo_accepts || !category)
-        return res.json({ success: false, message: "any data not provided" })
+    // if (!title || !budget || !description || !specs || !is_cargo_accepts || !category)
+    //     return res.json({ success: false, message: "any data not provided" })
 
     try {
         const advert = await createAdvert({ title, budget, description, specs, is_cargo_accepts, user, category })
